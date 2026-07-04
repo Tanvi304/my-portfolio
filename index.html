@@ -1858,77 +1858,61 @@ Java Developer | Spring Boot Developer | Backend Developer
 </button>
 
 <script>
+document.addEventListener("DOMContentLoaded", function () {
 
-const roles=[
-"Java Developer",
-"Spring Boot Developer",
-"Backend Developer",
-"SQL Enthusiast",
-"Software Engineer"
-];
+    const roles = [
+        "Java Developer",
+        "Spring Boot Developer",
+        "Backend Developer",
+        "SQL Enthusiast",
+        "Software Engineer"
+    ];
 
-let i=0;
-let j=0;
-let current="";
-let erase=false;
+    let i = 0;
+    let j = 0;
+    let current = "";
+    let erase = false;
 
-function typing(){
+    function typing() {
+        const text = roles[i];
 
-const text=roles[i];
+        if (!erase) {
+            current = text.substring(0, j++);
 
-if(!erase){
+            if (j > text.length) {
+                erase = true;
+                setTimeout(typing, 1500);
+                document.getElementById("typing").innerHTML = current;
+                return;
+            }
+        } else {
+            current = text.substring(0, j--);
 
-current=text.substring(0,j++);
+            if (j < 0) {
+                erase = false;
+                i = (i + 1) % roles.length;
+            }
+        }
 
-if(j>text.length){
+        document.getElementById("typing").innerHTML = current;
 
-erase=true;
+        setTimeout(typing, erase ? 40 : 120);
+    }
 
-setTimeout(typing,1500);
+    typing();
 
-return;
+    const topBtn = document.getElementById("topBtn");
 
-}
-
-}else{
-
-current=text.substring(0,j--);
-
-if(j<0){
-
-erase=false;
-
-i=(i+1)%roles.length;
-
-}
-
-}
-
-document.getElementById("typing").innerHTML=current;
-
-setTimeout(typing,erase?40:120);
-
-}
-
-typing();
-
-</script>
-<script>
-
-const topBtn=document.getElementById("topBtn");
-
-topBtn.onclick=function(){
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
+    if (topBtn) {
+        topBtn.onclick = function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        };
+    }
 
 });
-
-}
-
 </script>
 </body>
 </html>
