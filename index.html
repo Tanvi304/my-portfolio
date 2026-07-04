@@ -1858,62 +1858,63 @@ Java Developer | Spring Boot Developer | Backend Developer
 </button>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
     const roles = [
         "Java Developer",
         "Spring Boot Developer",
         "Backend Developer",
+        "Frontend Developer",
         "SQL Enthusiast",
         "Software Engineer"
-        "Frontend Developer"
     ];
 
-    const typingElement = document.getElementById("typing");
+    const typing = document.getElementById("typing");
 
-    let roleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
+    let role = 0;
+    let char = 0;
+    let deleting = false;
 
-    function type() {
-        const currentRole = roles[roleIndex];
+    function animate() {
 
-        if (!isDeleting) {
-            typingElement.textContent = currentRole.substring(0, charIndex + 1);
-            charIndex++;
+        const word = roles[role];
 
-            if (charIndex === currentRole.length) {
-                isDeleting = true;
-                setTimeout(type, 800); // Pause after complete word
+        if (!deleting) {
+            char++;
+            typing.textContent = word.slice(0, char);
+
+            if (char === word.length) {
+                deleting = true;
+                setTimeout(animate, 500); // Pause after word
                 return;
             }
 
-            setTimeout(type, 100); // Typing speed
+            setTimeout(animate, 80);
 
         } else {
-            typingElement.textContent = currentRole.substring(0, charIndex - 1);
-            charIndex--;
+            char--;
+            typing.textContent = word.slice(0, char);
 
-            if (charIndex === 0) {
-                isDeleting = false;
-                roleIndex = (roleIndex + 1) % roles.length;
+            if (char === 0) {
+                deleting = false;
+                role = (role + 1) % roles.length;
             }
 
-            setTimeout(type, 50); // Erasing speed
+            setTimeout(animate, 40);
         }
     }
 
-    type();
+    animate();
 
     const topBtn = document.getElementById("topBtn");
 
     if (topBtn) {
-        topBtn.addEventListener("click", function () {
+        topBtn.onclick = () => {
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
             });
-        });
+        };
     }
 
 });
