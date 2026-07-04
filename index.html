@@ -1866,50 +1866,54 @@ document.addEventListener("DOMContentLoaded", function () {
         "Backend Developer",
         "SQL Enthusiast",
         "Software Engineer"
+        "Frontend Developer"
     ];
 
-    let i = 0;
-    let j = 0;
-    let current = "";
-    let erase = false;
+    const typingElement = document.getElementById("typing");
 
-    function typing() {
-        const text = roles[i];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
-        if (!erase) {
-            current = text.substring(0, j++);
+    function type() {
+        const currentRole = roles[roleIndex];
 
-            if (j > text.length) {
-                erase = true;
-                setTimeout(typing, 1500);
-                document.getElementById("typing").innerHTML = current;
+        if (!isDeleting) {
+            typingElement.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
+
+            if (charIndex === currentRole.length) {
+                isDeleting = true;
+                setTimeout(type, 800); // Pause after complete word
                 return;
             }
+
+            setTimeout(type, 100); // Typing speed
+
         } else {
-            current = text.substring(0, j--);
+            typingElement.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
 
-            if (j < 0) {
-                erase = false;
-                i = (i + 1) % roles.length;
+            if (charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
             }
+
+            setTimeout(type, 50); // Erasing speed
         }
-
-        document.getElementById("typing").innerHTML = current;
-
-        setTimeout(typing, erase ? 40 : 120);
     }
 
-    typing();
+    type();
 
     const topBtn = document.getElementById("topBtn");
 
     if (topBtn) {
-        topBtn.onclick = function () {
+        topBtn.addEventListener("click", function () {
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
             });
-        };
+        });
     }
 
 });
