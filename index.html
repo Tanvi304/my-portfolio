@@ -577,47 +577,39 @@ transform:translateX(10px);
 /* Certificates */
 
 .certificate-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+    padding:40px 8%;
+}
 
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-gap:30px;
-
-padding:40px 8%;
-
+.certificate-grid a{
+    text-decoration:none;
+    color:white;
 }
 
 .certificate-card{
-
-background:#13223d;
-
-padding:40px;
-
-text-align:center;
-
-border-radius:20px;
-
-transition:.5s;
-
+    background:#13223d;
+    padding:40px;
+    text-align:center;
+    border-radius:20px;
+    transition:.4s;
+    cursor:pointer;
 }
 
 .certificate-card:hover{
-
-transform:translateY(-10px);
-
-box-shadow:0 0 20px #38bdf8;
-
+    transform:translateY(-10px);
+    box-shadow:0 0 20px #38bdf8;
 }
 
 .certificate-card i{
+    font-size:55px;
+    color:#38bdf8;
+    margin-bottom:20px;
+}
 
-font-size:55px;
-
-margin-bottom:20px;
-
-color:#38bdf8;
-
+.certificate-card strong{
+    color:#38bdf8;
 }
 /* ================= CODING PROFILES ================= */
 
@@ -1728,56 +1720,59 @@ Hire Me
 
 </section>
 
-<!-- ================= CERTIFICATES ================= -->
+<!-- ================= CERTIFICATIONS ================= -->
 
 <section id="certificates">
 
-<div class="section-title">
+    <div class="section-title">
+        <h2>Certifications</h2>
+        <p>Achievements & Learning</p>
+    </div>
 
-<h2>Certifications</h2>
+    <div class="certificate-grid">
 
-<p>Achievements & Learning</p>
+        <!-- Infosys Springboard -->
+        <a href="certificates/InfosysSpringboardCertificates.pdf" target="_blank" style="text-decoration:none; color:white;">
 
-</div>
+            <div class="certificate-card">
+                <i class="fa-solid fa-award"></i>
+                <h3>Infosys Springboard</h3>
+                <p>15+ Professional Certifications</p>
+                <br>
+                <strong>Click to View</strong>
+            </div>
 
-<div class="certificate-grid">
+        </a>
 
-<div class="certificate-card">
+        <!-- DataFlair Java -->
+        <a href="certificates/DataFlairJava.pdf" target="_blank" style="text-decoration:none; color:white;">
 
-<i class="fa-solid fa-award"></i>
+            <div class="certificate-card">
+                <i class="fa-solid fa-certificate"></i>
+                <h3>DataFlair</h3>
+                <p>Java Programming</p>
+                <br>
+                <strong>Click to View</strong>
+            </div>
 
-<h3>Infosys Springboard</h3>
+        </a>
 
-<p>Java Programming</p>
+        <!-- DataFlair Python -->
+        <a href="certificates/DataFlairPython.pdf" target="_blank" style="text-decoration:none; color:white;">
 
-</div>
+            <div class="certificate-card">
+                <i class="fa-solid fa-certificate"></i>
+                <h3>DataFlair</h3>
+                <p>Python Programming</p>
+                <br>
+                <strong>Click to View</strong>
+            </div>
 
-<div class="certificate-card">
+        </a>
 
-<i class="fa-solid fa-certificate"></i>
-
-<h3>Data Flair</h3>
-
-<p>Java Programming</p>
-
-</div>
-
-<div class="certificate-card">
-
-<i class="fa-solid fa-certificate"></i>
-
-<h3>Data Flair</h3>
-
-<p>Python Programming</p>
-
-</div>
-
-</div>
+    </div>
 
 </section>
-
-</section>
-
 <!-- ================= CODING PROFILES ================= -->
 
 <section id="coding">
